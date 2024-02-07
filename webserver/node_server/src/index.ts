@@ -2,9 +2,12 @@ import express, { Request, Response } from "express";
 import database from "./database";
 import { CreateWeatherDataPayload } from "./types";
 import { isCreateWeatherDataPayload } from "./isCreateWeatherDataPayload";
+import dotenv from "dotenv";
 
+dotenv.config();
+
+const LAN: string = process.env.LAN || "";
 const PORT = 8080;
-
 const app = express();
 app.use(express.json());
 
@@ -38,8 +41,8 @@ app.post("/weather", (req: Request, res: Response) => {
   res.status(201).json(newWeatherDataStatus);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, LAN, () => {
   console.log(
-    `API server listening on port ${PORT} - http://localhost:${PORT}`
+    `${LAN} : API server listening on port ${PORT} - http://localhost:${PORT}`
   );
 });
