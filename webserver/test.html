@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Splash page</title>
+    <!-- Bootstrap -->
+    <link href="css/app.min.css" rel="stylesheet" />
+    <link href="css/template.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!-- following 2 lines are required by splash page -->
+    <script src="js/portal.js" type="text/javascript"></script>
+  </head>
+
+  <body
+    style="
+      background-color: #e5e5e5;
+      background-image: url('images/background.jpg?v=1624349096032');
+    "
+    class="antEditModeOn"
+    data-background="pattern"
+  >
+    <div class="atn-wrapper">
+      <!-- following #mes div is required by splash page -->
+      <div id="mes">
+        <!-- Mandatory to show message on authentication page-->
+        <div id="message"></div>
+        <!-- message -->
+        <!-- START: JAVASCRIPT AND HTML TO HANDLE BLOCKOUT TIME AND COOKIE DISABLE EVENTS -->
+        <h1 id="splash_msg" btime>
+          <p style="font-size: 18px; font-weight: normal">
+            Currently under blackout period, You can log in after
+            <span style="font-size: 24px" id="javascript_countdown_time"
+              >10:10:10</span
+            >
+            hrs:mins:secs
+          </p>
+        </h1>
+        <div id="cookie_msg"></div>
+        <div class="clr"></div>
+        <!-- IMPORTANT: This javascript function should not be removed. It initializes certain javascript functionality-->
+        <script>
+          page_init();
+        </script>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="center-block text-center">
+              <br />
+              <img
+                src="images/logo.png?v=1624349096035"
+                alt="logo"
+                class="center-block atn-img img-responsive atn-logo"
+              />
+            </div>
+            <br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2 hidden-xs hidden-sm"></div>
+          <div class="col-md-4 col-sm-6" style="margin: 0 auto; float: none">
+            <div
+              id="brandingPlugins"
+              class="atn-container atn-1x2-4 atn-cell center-block"
+              style="
+                border: 0px;
+                color: rgb(102, 102, 102);
+                background-color: rgba(255, 255, 255, 0.85);
+              "
+            >
+              <div id="atn-plugin-container" class="atn-plugin-container">
+                <div class="text-center atn-plugin-sign-in-text">
+                  <div
+                    id="brandingSignIn"
+                    class="atn-text"
+                    medium-editor-index="0"
+                    spellcheck="true"
+                  >
+                    <p>THG Guest WiFi</p>
+                  </div>
+                </div>
+                <ul
+                  id="atn-plugin-carousel"
+                  class="atn-plugin-carousel atn-plugin-carousel-extra"
+                >
+                  <li>
+                    <form
+                      id="atn-plugin-form-clickthrough"
+                      class="atn-containing-form"
+                      action="/plugin/clickthrough/auth"
+                      method="post"
+                    >
+                      <div
+                        class="atn-slide atn-slide-clickthrough"
+                        data-slide="clickthrough"
+                      >
+                        <div class="atn-plugin-sub-heading text-center">
+                          <div id="automation-clickthrough" class="atn-text">
+                            Click-through
+                          </div>
+                        </div>
+                        <div
+                          class="atn-plugin-content center-block text-center"
+                        >
+                          <div
+                            class="btn btn-default btn-lg atn-button atn-button-no-link atn-button-no-visible atn-plugin-clickthrough-button atn-plugin-movable-button"
+                            style="height: 80px; min-height: 80px; width: 132px"
+                          >
+                            <div class="atn-button-text">Connect</div>
+                          </div>
+                        </div>
+                        <div class="atn-plugin-button text-center"></div>
+                      </div>
+                    </form>
+                  </li>
+                </ul>
+                <div
+                  class="atn-plugin-terms-text text-center"
+                  style="color: #666666"
+                >
+                  <div
+                    class="atn-text"
+                    medium-editor-index="2"
+                    spellcheck="true"
+                  >
+                    By signing in you are agreeing to
+                    <a href="#atnTermsOfUseModel" data-toggle="modal"
+                      >Terms of Use</a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="atn-plugin-skip-social-media text-center atn-plugin-clickthrough-button"
+                  style="display: none"
+                >
+                  <div
+                    class="atn-text"
+                    medium-editor-index="3"
+                    spellcheck="true"
+                  >
+                    <u>Get Wi-Fi access without signing in.</u>
+                  </div>
+                </div>
+                <div
+                  id="marketingOptOutContainer"
+                  class="atn-marketing-opt-out-text text-center"
+                  style="display: none"
+                >
+                  <label for="chkMarketingOptOut"
+                    ><input
+                      type="checkbox"
+                      id="chkMarketingOptOut"
+                      data-should-flip="false"
+                    /><span
+                      id="marketingOptOutText"
+                      class="atn-plugin-action-color"
+                      >I would like to receive latest news and promotional
+                      offers.</span
+                    ></label
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 hidden-sm"></div>
+        </div>
+        <br />
+        <!-- Footer -->
+        <!-- splash page footer -->
+        <div class="row atn-row">
+          <div class="col-sm-2 hidden-xs hidden-sm"></div>
+          <div class="col-md-8 col-sm-12">
+            <div class="container-fluid">
+              <div
+                class="row atn-footer atn-container"
+                style="margin-left: 0px; margin-right: 0px"
+              >
+                <div class="col-sm-12 text-center">
+                  <div
+                    class="atn-text atn-no-absolute"
+                    medium-editor-index="4"
+                    spellcheck="true"
+                  >
+                    <a href="#atnPrivacyPolicyModel" data-toggle="modal"
+                      >Privacy Policy</a
+                    >
+                    |
+                    <a href="#atnTermsOfUseModel" data-toggle="modal"
+                      >Terms of Use</a
+                    >
+                  </div>
+                </div>
+                <div class="col-sm-12 text-center" style="padding-top: 5px">
+                  <div
+                    id="footerMessage"
+                    class="atn-text atn-no-absolute medium-editor-placeholder"
+                    medium-editor-index="5"
+                    spellcheck="true"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2 hidden-sm"></div>
+        </div>
+        <!-- <div class="row">
+                <div class="col-md-12 center-block">
+                    <p class="text-center" id="poweredBy" style="font-size:11px; color:#333;"><img src="images/AirTight.png?v=2" /></p>
+                </div>
+            </div> -->
+        <!-- footer end -->
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- /.modal -->
+
+    <!-- Terms of Use Modal -->
+    <div
+      class="modal"
+      id="atnTermsOfUseModel"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="atnTermsOfUseModelLabel"
+      aria-hidden="true"
+      style="display: none"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&#xD7;</span>
+            </button>
+            <h4 class="modal-title" id="atnTermsOfUseModelLabel">
+              WiFi Service Agreement
+            </h4>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Terms of Use Modal -->
+    <div
+      class="modal"
+      id="atnPrivacyPolicyModel"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="atnPrivacyPolicyModelLabel1"
+      aria-hidden="true"
+      style="display: none"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&#xD7;</span>
+            </button>
+            <h4 class="modal-title" id="atnPrivacyPolicyModelLabel1">
+              Privacy Policy
+            </h4>
+          </div>
+          <div
+            id="modalPrivacyPolicyBody"
+            class="modal-body"
+            style="overflow: auto; word-break: break-word"
+          ></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="webFormModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+      style="display: none"
+      data-keyboard="false"
+      data-backdrop="static"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 0px">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+              style="font-size: 30px"
+            >
+              &#xD7;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Web Form</h4>
+          </div>
+          <div id="webFormBody" class="modal-body">
+            <form
+              method="post"
+              action="/plugin/webForm/auth"
+              id="webformForm"
+              class="form-horizontal"
+              role="form"
+            >
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <p class="help-block">Fields marked with * are mandatory</p>
+                </div>
+              </div>
+
+              <div class="form-group" id="displayEmail">
+                <label for="inputEmail" class="col-sm-4 control-label"
+                  >Email
+                  <span id="mandatoryEmail">*</span>
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="guest[email]"
+                    id="inputEmail"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group" id="error_lbl" style="display: none">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <p id="default_error_msg">Please enter valid values for:</p>
+                  <p id="error_msg"></p>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer" style="background: #f2f2f2">
+            <button
+              type="button"
+              id="popupWebformSubmit"
+              class="btn btn-default"
+            >
+              Submit
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+  </body>
+</html>

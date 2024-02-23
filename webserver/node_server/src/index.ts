@@ -1,15 +1,43 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import database from "./database";
 import { CreateWeatherDataPayload } from "./types";
 import { isCreateWeatherDataPayload } from "./isCreateWeatherDataPayload";
+
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const LAN: string = process.env.LAN || "";
-const PORT = 8080;
+const PORT = parseInt(process.env.PORT || "kk");
+
+export interface TokenRequest extends Request {
+  originalPath?: string;
+}
+
+console.log(LAN, PORT);
+// const PORT = 8080;
 const app = express();
 app.use(express.json());
+
+app.use((req: TokenRequest, res, next) => {
+  // Get the original path from the headers
+  // req.originalPath = req.headers["x-original-uri"] || req.url;
+
+  console.log("Original Path:", req.headers["x-original-uri"]);
+  if (typeof req.headers["x-original-uri"] === "string") {
+    req.originalPath = req.headers["x-original-uri"];
+  }
+  next();
+});
+
+app.get("/", (req: TokenRequest, res: Response) => {
+  if (!!req.originalPath) {
+    res.redirect(req.originalPath);
+  } else {
+    console.log(req);
+    res.status(400).send();
+  }
+});
 
 app.get("/health", (req: Request, res: Response) => {
   res.send("OK");
