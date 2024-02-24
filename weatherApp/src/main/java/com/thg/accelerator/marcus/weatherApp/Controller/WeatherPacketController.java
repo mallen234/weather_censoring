@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/v1/weather")
-@CrossOrigin(origins = "http://31.24.224.144")
+//@CrossOrigin(origins = "http://31.24.224.144")
 public class WeatherPacketController {
     private final WeatherPacketService weatherPacketService;
 
