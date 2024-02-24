@@ -26,6 +26,7 @@ public class IpFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         String clientIp = request.getRemoteAddr();
+        System.out.println(clientIp);
         if (allowedIpList.contains(clientIp)) {
             chain.doFilter(request, response);
         } else {
