@@ -24,7 +24,6 @@ public class WeatherPacketController {
     @GetMapping
     public ResponseEntity<List<WeatherPacket>> findWeatherPackets(){
         return ResponseEntity.ok(weatherPacketService.getWeatherPackets());
-
     }
 
     @GetMapping("/{id}")
