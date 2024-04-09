@@ -16,13 +16,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Java
-        uses: actions/setup-java@v2
-        with:
-          java-version: 'adopt@1.11'
+      - name: Setup Java JDK
+          uses: actions/setup-java@v4.1.0
+          with:
+            distribution: 'corretto'
+            java-version: '17'
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon
+          run: |
+            cd $GITHUB_WORKSPACE/Backend
+            ./gradlew build --no-daemon
 
       # Additional steps to deploy artifacts via SCP
       - name: Copy artifacts via SCP
