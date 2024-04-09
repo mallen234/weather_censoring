@@ -23,7 +23,8 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          cd ~/weatherApp
+          echo $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE/weatherApp
           ./gradlew build --no-daemon
 
       # Additional steps to deploy artifacts via SCP
