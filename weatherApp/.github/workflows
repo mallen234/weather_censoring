@@ -1,0 +1,35 @@
+name: build_weather_app
+
+on:
+  push:
+    branches: [main]
+    # paths: .github/workflows/deploy-to-kubernetes.yaml
+  pull_request:
+    branches: none
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 'adopt@1.11'
+
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
+
+      # Additional steps to deploy artifacts via SCP
+      - name: Copy artifacts via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: $31.24.224
+          username: $metrics
+          key: ${{ secrets.VM_KEY }}
+          source: "build/libs/*.jar"
+          target: "/home/metrics/Documents/artifacts"
