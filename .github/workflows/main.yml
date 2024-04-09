@@ -22,9 +22,9 @@ jobs:
           java-version: '17'
 
       - name: Build with Gradle
-          run: |
-            cd $GITHUB_WORKSPACE/Backend
-            ./gradlew build --no-daemon
+        run: |
+          cd $GITHUB_WORKSPACE/Backend
+          ./gradlew build --no-daemon
 
       # Additional steps to deploy artifacts via SCP
       - name: Copy artifacts via SCP
